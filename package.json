@@ -51,7 +51,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "surge --project ./ --domain gold-price.surge.sh"
+      "pre-push": "yarn build && mv ./build/index.html ./build/200.html && surge --project ./build/ --domain gold-price.surge.sh"
     }
   }
 }
