@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import Header from "./components/Header";
 import { CurrencyCode } from "./constants";
 
 ReactDOM.render(
