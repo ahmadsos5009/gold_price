@@ -1,17 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Nav, Navbar, Dropdown } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { withRouter, RouteComponentProps } from "react-router";
 import CountryData from "country-data";
 import PriceTag from "./PriceTag";
 import { CurrencyCode, CountryCode } from "../../constants";
+import CountrySelect from "./CountrySelect";
 
-export interface Header extends PriceTag, RouteComponentProps {}
-
-const StyledDropDown = styled(Dropdown.Menu)`
-  max-height: 30vh;
-  overflow-y: auto;
-`;
+export interface Header extends PriceTag, RouteComponentProps { }
 
 const StyledNav = styled(Nav)`
   align-items: center;
@@ -23,7 +19,11 @@ const StyledAlert = styled.h4`
 `;
 
 const StyledNavbar = styled(Navbar)`
-  background-color: #dee2e6!important;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-image: linear-gradient(#fff,#f5f5fa);
+  box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 `;
 
 const Header: React.FC<Header> = ({
@@ -31,15 +31,18 @@ const Header: React.FC<Header> = ({
   currentPrice,
   location
 }) => {
-  console.log(location);
-  const currency = location.pathname === "/" ? "USD" : location.pathname.replace("/","");
+  const currency = location.pathname === "/" ? "USD" : location.pathname.replace("/", "");
   const code = CountryData.currencies[currency].code;
   const countryCode = CountryCode[code];
   const countryName = CountryData.countries[countryCode].name;
   const countryEmoji = CountryData.countries[countryCode].emoji;
-  
+  const countries = CurrencyCode.map((currency: string) => ({
+    value: currency,
+    label: CountryData.currencies[currency].name
+  }))
+
   return (
-    <StyledNavbar bg="light" variant="light">
+    <StyledNavbar bg="light" variant="light" sticky="top">
       <Navbar.Brand href="/">
         <img
           src="log.svg"
@@ -56,18 +59,7 @@ const Header: React.FC<Header> = ({
       <Nav>
         <PriceTag previousPrice={previousPrice} currentPrice={currentPrice} />
       </Nav>
-      <Dropdown>
-        <Dropdown.Toggle variant="info" id="dropdown-basic">
-          Countries
-        </Dropdown.Toggle>
-        <StyledDropDown>
-          {CurrencyCode.map((currency: string) => (
-            <Dropdown.Item href={`/${currency}`} key={currency}>
-              {CountryData.currencies[currency].name}
-            </Dropdown.Item>
-          ))}
-        </StyledDropDown>
-      </Dropdown>
+      <CountrySelect countries={countries} />
     </StyledNavbar>
   );
 };
