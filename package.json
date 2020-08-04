@@ -52,10 +52,5 @@
   "devDependencies": {
     "git-scripts": "^0.4.3",
     "surge": "^0.21.6"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "yarn build && mv ./build/index.html ./build/200.html"
-    }
   }
 }

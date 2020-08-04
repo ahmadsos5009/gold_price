@@ -17,7 +17,7 @@ jobs:
         run: sudo mv ./build/index.html ./build/200.html
 
       - name: Installing Surge
-        run: npm install -g surge
+        run: sudo npm install -g surge
 
       - name: Deploying website
         run: surge --project ./build/ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
