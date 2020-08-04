@@ -6,6 +6,7 @@ import Main from "../price";
 export const Page: React.FC = () => (
   <Container>
     <Header previousPrice={44.25} currentPrice={44.6} />
+    <h1>Test...</h1>
     <Main price={44.06} date={new Date()}/>
   </Container>
 );
