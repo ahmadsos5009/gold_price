@@ -5,27 +5,27 @@ on:
       - master
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            
-            - run: echo "Setting up NodeJs"
-            - name: Setup NodeJs
-              uses: actions/setup-node@v1
-              with:
-               node-version: 12.x
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-            - name: Building Assets
-              run: yarn build
+      - run: echo "Setting up NodeJs"
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
 
-            - name: Config Assets For Surge
-              run: mv ./build/index.html ./build/200.html
+      - name: Building Assets
+        run: yarn build
 
-            - name: Deploying website
-              run: npm install -g surge
+      - name: Config Assets For Surge
+        run: mv ./build/index.html ./build/200.html
 
-            - name: Deploying website
-              run: surge --project ./build/ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }} 
-          
-            - run: echo "Please visit => ${{ secrets.SURGE_DOMAIN }}"      
+      - name: Deploying website
+        run: npm install -g surge
+
+      - name: Deploying website
+        run: surge --project ./build/ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+
+      - run: echo "Please visit => ${{ secrets.SURGE_DOMAIN }}"
