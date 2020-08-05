@@ -29,16 +29,22 @@ const MyChart = ({pricesHistory}) => {
       <br />
       <br />
       <Container>
-      <div style={{ resize: 'both', overflow: 'auto', width: '500px' }}>
-        <Box>
-          <Chart data={data} series={series} axes={axes} tooltip />
-        </Box>
-      </div>
-      <caption><Badge variant="info">Gold Price During Month</Badge></caption>
+        <div
+          style={{
+            resize: "both",
+            overflow: "auto",
+            width: window.innerWidth * 0.7,
+          }}
+        >
+          <Box>
+            <Chart data={data} series={series} axes={axes} tooltip />
+          </Box>
+        </div>
+        <Badge variant="info">Gold Price During Month</Badge>
       </Container>
       <br />
     </>
-  )
+  );
 }
 
 export default MyChart;

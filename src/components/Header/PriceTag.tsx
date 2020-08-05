@@ -1,49 +1,49 @@
 import React from "react";
-import { Row, Container } from "react-bootstrap";
-import styled from "styled-components";
 
 interface PriceTag {
   currentPrice: number;
   previousPrice: number;
+  symbol: string
 }
 
-const StyledArrow: any = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-${(props: any) => (props.up ? "bottom" : "top")}: 
-       10px solid ${(props: any) => (props.up ? "green" : "red")} ;
-  margin-top: 5px;
-`;
+type SVG = {
+  price: string,
+  different: string,
+  color: string,
+  flip?: string
+}
 
-const StyledPriceTag: any = styled.div`
-  margin: 5px;
-  color: ${(props: any) => (props.up ? "green" : "red")};
-`;
+const SVG: React.FC<SVG> = ({ price, different, color, flip = "" }) => (
+  <div style={{ alignContent: "center" }}>
+    <strong style={{ marginRight: "5px" }}>{price}</strong>
+    <svg viewBox="0 0 12 12" width="16" height="16">
+      <path
+        d="M6,0.002L0 6.002 4.8 6.002 4.8 11.9996 7.2 11.9996 7.2 6.002 12 6.002z"
+        transform={flip}
+        fill={color}
+      />
+    </svg>
+    <strong style={{ marginLeft: "5px", color: color }}>{different}</strong>
+  </div>
+);
 
-const PriceTag: React.FC<PriceTag> = ({ currentPrice, previousPrice }) => {
+const PriceTag: React.FC<PriceTag> = ({ currentPrice, previousPrice, symbol }) => {
   if (currentPrice < previousPrice) {
     return (
-      <StyledPriceTag>
-        <Container>
-          <Row>
-            <StyledArrow /> {currentPrice} -
-            {Math.abs(currentPrice - previousPrice).toFixed(2)}
-          </Row>
-        </Container>
-      </StyledPriceTag>
+      <SVG
+        price={symbol + currentPrice}
+        different={`−${Math.abs(currentPrice - previousPrice).toFixed(2)}`}
+        color={"#d23f31"}
+        flip={"scale(1, -1) translate(0, -12)"}
+      />
     );
   } else {
     return (
-      <StyledPriceTag up>
-        <Container>
-          <Row>
-            <StyledArrow up /> {currentPrice} +
-            {Math.abs(currentPrice - previousPrice).toFixed(2)}
-          </Row>
-        </Container>
-      </StyledPriceTag>
+      <SVG
+        price={symbol + currentPrice}
+        different={`+${Math.abs(currentPrice - previousPrice).toFixed(2)}`}
+        color={"#28a745"}
+      />
     );
   }
 };
