@@ -9,10 +9,7 @@ class ChartsPage extends React.Component {
     let backgroundColor;
     let borderColor;
     let pointBackgroundColor;
-    if (
-      this.props.data[this.props.data.length - 1] >
-      this.props.data[this.props.data.length - 2]
-    ) {
+    if (this.props.price > this.props.previousPrice) {
       backgroundColor = "rgb(191,227,209,0.4)";
       borderColor = "rgb(191,227,209)";
     } else {
@@ -22,7 +19,7 @@ class ChartsPage extends React.Component {
 
     this.state = {
       dataLine: {
-        labels: this.props.dates,
+        labels: this.props.dates.map(timestamp => new Date(timestamp * 1000).getDate()),
         datasets: [
           {
             label: "Price History",
@@ -43,7 +40,7 @@ class ChartsPage extends React.Component {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: this.props.data,
+            data: this.props.data.map(price => price.toFixed(2)),
           },
         ],
       },

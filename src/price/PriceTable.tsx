@@ -3,15 +3,14 @@ import { Table, Badge } from "react-bootstrap";
 
 type PriceTable = {
     price: number,
-    countryCurrency: string,
-    updateDate: Date
+    countryCurrency: string
 }
 
 function calculate_price_per_unit(price: number, unit: number) {
     return (unit * price).toFixed(2);
 }
 
-const PriceTable: React.FC<PriceTable> = ({price, countryCurrency, updateDate}) => {
+const PriceTable: React.FC<PriceTable> = ({price, countryCurrency}) => {
    return (
      <React.Fragment>
        <Table striped bordered hover responsive>

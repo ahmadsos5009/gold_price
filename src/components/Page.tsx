@@ -1,11 +1,19 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import Header from "./Header";
 import Main from "../price";
+import {Store} from "../constants/index";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 
-export const Page: React.FC = () => (
-  <Container fluid={"md"}>
-    <Header />
-    <Main price={44.06} date={new Date()} historyData={data} />
-  </Container>
-);
+const Page: React.FC<RouteComponentProps> = ({location}) => {
+    const currency = location.pathname === "/" ? "USD" : location.pathname.replace("/", "");
+
+    return (
+        <Container fluid={"md"}>
+            <Header/>
+            <Main price={Store.prices[currency]} timestamp={Store.timestamp} currency={currency}/>
+        </Container>
+    );
+}
+
+export default withRouter(Page);

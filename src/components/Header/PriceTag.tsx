@@ -27,11 +27,11 @@ const SVG: React.FC<SVG> = ({ price, different, color, flip = "" }) => (
   </div>
 );
 
-const PriceTag: React.FC<PriceTag> = ({ currentPrice, previousPrice, symbol }) => {
+const PriceTag: React.FC<PriceTag> = ({ previousPrice,currentPrice, symbol }) => {
   if (currentPrice < previousPrice) {
     return (
       <SVG
-        price={symbol + currentPrice}
+        price={symbol + currentPrice.toFixed(2)}
         different={`−${Math.abs(currentPrice - previousPrice).toFixed(2)}`}
         color={"#d23f31"}
         flip={"scale(1, -1) translate(0, -12)"}
@@ -40,7 +40,7 @@ const PriceTag: React.FC<PriceTag> = ({ currentPrice, previousPrice, symbol }) =
   } else {
     return (
       <SVG
-        price={symbol + currentPrice}
+        price={symbol + currentPrice.toFixed(2)}
         different={`+${Math.abs(currentPrice - previousPrice).toFixed(2)}`}
         color={"#28a745"}
       />
