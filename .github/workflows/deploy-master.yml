@@ -6,6 +6,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Update qy
+        run: sudo apt-get update -qy
+      - name: Installing lftp
+        run: apt-get install -y lftp
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
         with:
