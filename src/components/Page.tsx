@@ -2,7 +2,7 @@ import React from "react";
 import {Container} from "react-bootstrap";
 import Header from "./Header";
 import Main from "../price";
-import {Store} from "../constants/index";
+import {Store} from "../constants";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 
 const Page: React.FC<RouteComponentProps> = ({location}) => {
