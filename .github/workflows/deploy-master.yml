@@ -6,10 +6,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Update qy
-        run: sudo apt-get update -qy
-      - name: Installing lftp
-        run: apt-get install -y lftp
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
         with:
@@ -18,9 +14,14 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
 
-      - name: Config Assets For Surge
-        run: sudo mv ./build/index.html ./build/200.html
+      - name: Update qy
+        run: sudo apt-get update -qy
+      - name: Installing lftp
+        run: sudo apt-get install -y lftp
 
+      - name: Send build To Over lftp
+        run: lftp -c "set ftp:ssl-allow no; open -u epiz_26397561,r7ehK1nHPE ftpsite.com; mirror -v ./build/ /htdocs --reverse --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+     
       - name: Installing Surge
         run: sudo npm install -g surge
 
