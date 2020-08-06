@@ -12,4 +12,4 @@ jobs:
         run: sudo apt-get install -y -qq lftp
 
       - name: Send build To Over lftp
-        run: lftp -c "set ftp:ssl-allow no; open -u epiz_26397561,r7ehK1nHPE ftpsite.com; mirror -v ./README.md /htdocs --reverse --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+        run: lftp -c "set ftp:ssl-allow no; open -u epiz_26397561,r7ehK1nHPE ftpsite.com; mirror -v ./ /htdocs/test --reverse --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
