@@ -1,4 +1,5 @@
 import React from 'react'
+import {Helmet} from "react-helmet";
 import styled from 'styled-components';
 import {Container, Row, Col} from 'react-bootstrap';
 import {CountryCode, History} from '../constants';
@@ -43,6 +44,10 @@ const Main: React.FC<Main> = ({price, timestamp, currency}) => {
 
     return (
         <StyledContainer fluid>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Gold Price In {countryName}</title>
+            </Helmet>
             <br/>
             <br/>
             <StyledText>
