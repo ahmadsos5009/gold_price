@@ -17,7 +17,7 @@ jobs:
         run: sudo mv ./build/index.html ./build/200.html
 
       - name: Config robots.txt
-        run: sudo rm -rf ./build/robots.txt && touch ./build/robots.txt && echo "User-agent: *" >> ./robots.txt
+        run: sudo rm -rf ./build/robots.txt && touch ./build/robots.txt && echo "User-agent':' *" >> ./robots.txt
       
       - name: Installing Surge
         run: sudo npm install -g surge
