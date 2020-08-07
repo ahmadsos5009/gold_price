@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Page from "./components/Page";
 import { CurrencyCode } from "./constants";
+import GooglePage from "./components/GooglePage";
 
 ReactDOM.render(
   <Router>
     <Switch>
       <Route path="/" exact component={Page} />
-      <Route path="/google86229b14d00bfabe.html" exact component={Page} />
+      <Route path="/google86229b14d00bfabe.html" exact component={GooglePage} />
       {CurrencyCode.map((currency: string) => (
         <Route key={currency} path={`/${currency}`} exact component={Page} />
       ))}
