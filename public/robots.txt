@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://gold-price.ga/sitemap.txt
