@@ -51,7 +51,7 @@ class ChartsPage extends React.Component {
     return (
       <MDBContainer>
         <Line data={this.state.dataLine} options={{ responsive: true }} />
-        <Badge variant="info">30 Day Gold Price History</Badge>
+        <Badge variant="info">{this.props.t('badgeGraph')}</Badge>
       </MDBContainer>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Badge } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 type PriceTable = {
     price: number,
@@ -11,20 +12,22 @@ function calculate_price_per_unit(price: number, unit: number) {
 }
 
 const PriceTable: React.FC<PriceTable> = ({price, countryCurrency}) => {
+  const [t] = useTranslation('translations');
+
    return (
      <React.Fragment>
        <Table striped bordered hover responsive>
          <thead>
            <tr>
              <th colSpan={2}>
-               Price table based on purity, In {countryCurrency}
+             {t('purity')} {countryCurrency}
              </th>
            </tr>
          </thead>
          <tbody>
            <tr>
-             <th>Unite</th>
-             <th>Price</th>
+             <th>{t('tableUnti')}</th>
+             <th>{t('tablePrice')}</th>
            </tr>
            <tr>
              <td>24K</td>
@@ -45,7 +48,7 @@ const PriceTable: React.FC<PriceTable> = ({price, countryCurrency}) => {
          </tbody>
          <caption>
            <Badge variant="info">
-             Price get updated every 12 hours
+           {t('badgePriceTable')}
            </Badge>
          </caption>
        </Table>

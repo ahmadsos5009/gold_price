@@ -30,8 +30,8 @@ const CountrySelect: React.FC<CountrySelect> = ({ countries }) => {
             onChange={(e: any) => history.push(e.value)}
             placeholder="Search..."
             styles={selectStyles}
-            defaultValue={{ label: 'Countries', options: [] }}
-            options={[{ label: "Countries", options: countries }]}
+            defaultValue={{ label: 'Currency', options: [] }}
+            options={[{ label: "Currencys", options: countries }]}
             formatGroupLabel={formatGroupLabel} />
     );
 }
