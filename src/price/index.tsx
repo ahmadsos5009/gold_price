@@ -56,9 +56,10 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
         //@ts-ignore
         countryCurrency = CurrencyDictionary[language][code];
     }
-    
+
     useEffect(() => {
         i18n.changeLanguage(language);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
