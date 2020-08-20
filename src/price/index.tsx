@@ -99,89 +99,122 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
         i18n.changeLanguage(primaryLanguage);
     }, [i18n, primaryLanguage]);
 
+    const gramPrice = price.toFixed(2) 
+    const ouncePrice = (price * 31.103).toFixed(2)
+    const kiloPrice = (price * 1000).toFixed(2);
+    
     return (
-        <StyledContainer fluid>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Gold Price In {countryName}</title>
-            </Helmet>
+      <StyledContainer fluid>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{t("metaTitle", { countryName })}</title>
+          <meta
+            name="description"
+            content={t("metaDescription", { countryName, countryCurrency })}
+          />
+          <meta
+            name="Keywords"
+            content={t("metaKeywords", { countryName, countryCurrency })}
+          />
+          <meta property="og:url" content={`https://gold-price.ga/${code}`} />
+          <meta
+            property="og:description"
+            content={t("metaOGDescription", {
+              countryName,
+              countryCurrency,
+              code,
+              ouncePrice,
+              gramPrice,
+              kiloPrice,
+              updatedTime,
+            })}
+          />
+          <meta property="og:title" content={t("metaTitle", { countryName })} />
+          <meta property="og:type" content="product" />
+        </Helmet>
+        <br />
+        <br />
+        <Header>
+          {t("header", { countryName })} {countryEmoji}
+        </Header>
+        <Row>
+          <Col xs={16} md={4}>
+            <PriceTag
+              previousPrice={history[history.length - 2]}
+              currentPrice={wightPrice}
+              symbol={currencySymbol}
+            />
+            <ButtonGroup>
+              <Button
+                variant="outline-dark"
+                value={Wight.gram}
+                active={wight === Wight.gram}
+                onClick={handleWightClick}
+              >
+                {t("gram")}
+              </Button>
+              <Button
+                variant="outline-dark"
+                value={Wight.ounce}
+                active={wight === Wight.ounce}
+                onClick={handleWightClick}
+              >
+                {t("ounce")}
+              </Button>
+              <Button
+                variant="outline-dark"
+                value={Wight.kilo}
+                active={wight === Wight.kilo}
+                onClick={handleWightClick}
+              >
+                {t("kilo")}
+              </Button>
+            </ButtonGroup>
+          </Col>
+          <Col>
             <br />
-            <br />
-            <Header>{t('header', { countryName })} {countryEmoji}</Header>
-            <Row>
-                <Col xs={16} md={4}>
-                    <PriceTag
-                        previousPrice={history[history.length - 2]}
-                        currentPrice={wightPrice}
-                        symbol={currencySymbol}
-                    />
-                    <ButtonGroup>
-                        <Button variant="outline-dark"
-                            value={Wight.gram}
-                            active={wight === Wight.gram}
-                            onClick={handleWightClick}>
-                            {t('gram')}
-                        </Button>
-                        <Button variant="outline-dark"
-                            value={Wight.ounce}
-                            active={wight === Wight.ounce}
-                            onClick={handleWightClick}>
-                            {t('ounce')}
-                        </Button>
-                        <Button variant="outline-dark"
-                            value={Wight.kilo}
-                            active={wight === Wight.kilo}
-                            onClick={handleWightClick}>
-                            {t('kilo')}
-                        </Button>
-                    </ButtonGroup>
-                </Col>
-                <Col>
-                    <br />
-                    <StyledDate className="mr-auto">
-                        {t('update', { updatedTime })}
-                    </StyledDate>
-                </Col>
-            </Row>
-            <br />
-            <br />
-            <Row className={"show-grid"}>
-                <Col xs={16} md={4}>
-                    <PriceTable
-                        price={wightPrice}
-                        countryCurrency={countryCurrency}
-                    />
-                </Col>
-                <Col xs={12} md={4}>
-                    <PriceWeight price={price} />
-                </Col>
-            </Row>
-            <Row className={"show-grid"}>
-                <Col xs={12} md={4}>
-                    <ChartsPage dates={History.date}
-                        data={history}
-                        price={wightPrice}
-                        previousPrice={history[history.length - 2]}
-                    />
-                </Col>
-            </Row>
-            <br />
-            <br />
-            <br />
-            <br />
-            <Row className={"show-grid"}>
-                <Col>
-                    <Welcome />
-                </Col>
-            </Row>
-            <hr />
-            <br />
-            <Link to="/currencys" exact>
-                {t('currencysPage')}
-            </Link>
-            <br />
-            <br />
-        </StyledContainer>
+            <StyledDate className="mr-auto">
+              {t("update", { updatedTime })}
+            </StyledDate>
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <Row className={"show-grid"}>
+          <Col xs={16} md={4}>
+            <PriceTable price={wightPrice} countryCurrency={countryCurrency} />
+          </Col>
+          <Col xs={12} md={4}>
+            <PriceWeight price={price} />
+          </Col>
+        </Row>
+        <Row className={"show-grid"}>
+          <Col xs={12} md={4}>
+            <ChartsPage
+              dates={History.date}
+              data={history}
+              price={wightPrice}
+              previousPrice={history[history.length - 2]}
+            />
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Row className={"show-grid"}>
+          <Col>
+            <Welcome />
+          </Col>
+        </Row>
+        <hr />
+        <br />
+        <Link to="/currencys" exact>
+          {t("currencysPage")}
+        </Link>
+        <br />
+        <br />
+      </StyledContainer>
     );
 }
 

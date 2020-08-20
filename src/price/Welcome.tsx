@@ -6,24 +6,24 @@ const Welcome = () => {
     const [t] = useTranslation('translations');
 
     return (
-        <Alert variant="success">
-            <Alert.Heading>{t('Welcome1')}</Alert.Heading>
-            <p>
-            {t('Welcome2')}
-                <br/>
-                {t('Welcome3')}
-                <br/>
-                {t('Welcome4')}
-            </p>
-            <hr />
-            <p>
-                <strong>{t('Welcome5')}</strong>
-                <br/>
-                {t('Welcome6')}
-                <br/>
-                {t('Welcome7')}
-            </p>
-        </Alert>
+      <Alert variant="dark">
+        <Alert.Heading>{t("Welcome1")}</Alert.Heading>
+        <p>
+          {t("Welcome2")}
+          <br />
+          {t("Welcome3")}
+          <br />
+          {t("Welcome4")}
+        </p>
+        <hr />
+        <p>
+          <strong>{t("Welcome5")}</strong>
+          <br />
+          {t("Welcome6")}
+          <br />
+          {t("Welcome7")}
+        </p>
+      </Alert>
     );
 }
 
