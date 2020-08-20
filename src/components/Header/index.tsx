@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import CountryData from "country-data";
 import { CurrencyCode } from "../../constants";
 import CountrySelect from "./CountrySelect";
+import LanguagesSelect from "./LanguagesSelect";
 
 const StyledNav = styled(Nav)`
   align-items: center;
@@ -16,6 +17,10 @@ const StyledNavbar = styled(Navbar)`
   background-image: linear-gradient(#fff,#f5f5fa);
   box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 `;
+
+const Manu = styled.div`
+   padding-right: 10px;
+`
 
 const Header: React.FC = () => {
   const countries = CurrencyCode.map((currency: string) => ({
@@ -37,7 +42,11 @@ const Header: React.FC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <StyledNav className="mr-auto"></StyledNav>
-        <CountrySelect countries={countries} />
+        <Manu>
+          <CountrySelect countries={countries} />
+        </Manu>
+        <NavDropdown.Divider />
+        <LanguagesSelect />
       </Navbar.Collapse>
     </StyledNavbar>
   );

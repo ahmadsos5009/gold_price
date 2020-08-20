@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Helmet } from "react-helmet";
 import styled from 'styled-components';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 import { CountryCode, History } from '../constants';
 import PriceTable from './PriceTable';
 import PriceWeight from './PriceWeight';
@@ -17,7 +17,14 @@ import { NavLink } from 'react-router-dom';
 interface Main {
     price: number,
     timestamp: number,
-    currency: string
+    currency: string,
+    languageParam: string
+}
+
+enum Wight {
+    gram = 'gram',
+    ounce = 'ounce',
+    kilo = 'kilo'
 }
 
 const StyledContainer = styled(Container)`
@@ -26,8 +33,6 @@ const StyledContainer = styled(Container)`
 
 const StyledDate = styled.span`
   font-size: 12px;
-  color: #bbb;
-  alien
 `;
 
 const Header = styled.h1`
@@ -37,8 +42,12 @@ const Header = styled.h1`
   font-weight: 700;
 `
 
-const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
-    const previousPrice = History.data[currency][History.data[currency].length - 2];
+const Link = styled(NavLink)`
+   color: #343a40;
+   font-weight: 400;
+`
+
+const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => {
     let countryCurrency = CountryData.currencies[currency].name;
     const code = CountryData.currencies[currency].code;
     const countryCode = CountryCode[code];
@@ -46,21 +55,49 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
     const countryEmoji = CountryData.countries[countryCode].emoji;
     const currencySymbol = CountryData.currencies[currency].symbol;
     const updatedTime = new Date((timestamp * 1000)).toUTCString();
-    const language: string = CountryData.countries[countryCode].languages[0] || 'eng'
+    const language: string = CountryData.countries[countryCode].languages[0] || 'en'
     const [t, i18n] = useTranslation('translations');
 
+    const [wight, setWight] = useState('gram');
+    const [wightPrice, setWightPrice] = useState(price);
+    const [history, setHistory] = useState(History.data[currency]);
+
+    const handleWightClick = useCallback((e: any) => {
+        e.preventDefault();
+        setWight(e.currentTarget.value);
+        switch (e.currentTarget.value) {
+            case Wight.gram:
+                setWightPrice(price);
+                setHistory(History.data[currency]);
+                return;
+            case Wight.ounce:
+                setWightPrice((price * 31.103));
+                setHistory(History.data[currency].map((price: number) => (price * 31.103)));
+                return;
+            case Wight.kilo:
+                setWightPrice((price * 1000));
+                setHistory(History.data[currency].map((price: number) => (price * 1000)));
+                return;
+        }
+    }, [currency, price]);
+
+    let primaryLanguage = 'en';
+    if (languageParam)
+        primaryLanguage = languageParam;
+    else
+        primaryLanguage = language;
+
     //@ts-ignore
-    if (language !== 'eng' && CountryDictionary[language]) {
+    if (language !== 'en' && CountryDictionary[primaryLanguage]) {
         //@ts-ignore
-        countryName = CountryDictionary[language][countryCode];
+        countryName = CountryDictionary[primaryLanguage][countryCode];
         //@ts-ignore
-        countryCurrency = CurrencyDictionary[language][code];
+        countryCurrency = CurrencyDictionary[primaryLanguage][code];
     }
 
     useEffect(() => {
-        i18n.changeLanguage(language);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        i18n.changeLanguage(primaryLanguage);
+    }, [i18n, primaryLanguage]);
 
     return (
         <StyledContainer fluid>
@@ -74,12 +111,33 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
             <Row>
                 <Col xs={16} md={4}>
                     <PriceTag
-                        previousPrice={previousPrice}
-                        currentPrice={price}
+                        previousPrice={history[history.length - 2]}
+                        currentPrice={wightPrice}
                         symbol={currencySymbol}
                     />
+                    <ButtonGroup>
+                        <Button variant="outline-dark"
+                            value={Wight.gram}
+                            active={wight === Wight.gram}
+                            onClick={handleWightClick}>
+                            {t('gram')}
+                        </Button>
+                        <Button variant="outline-dark"
+                            value={Wight.ounce}
+                            active={wight === Wight.ounce}
+                            onClick={handleWightClick}>
+                            {t('ounce')}
+                        </Button>
+                        <Button variant="outline-dark"
+                            value={Wight.kilo}
+                            active={wight === Wight.kilo}
+                            onClick={handleWightClick}>
+                            {t('kilo')}
+                        </Button>
+                    </ButtonGroup>
                 </Col>
                 <Col>
+                    <br />
                     <StyledDate className="mr-auto">
                         {t('update', { updatedTime })}
                     </StyledDate>
@@ -90,7 +148,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
             <Row className={"show-grid"}>
                 <Col xs={16} md={4}>
                     <PriceTable
-                        price={price}
+                        price={wightPrice}
                         countryCurrency={countryCurrency}
                     />
                 </Col>
@@ -101,10 +159,10 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
             <Row className={"show-grid"}>
                 <Col xs={12} md={4}>
                     <ChartsPage dates={History.date}
-                        data={History.data[currency]}
-                        price={price}
-                        previousPrice={previousPrice}
-                        t={t} />
+                        data={history}
+                        price={wightPrice}
+                        previousPrice={history[history.length - 2]}
+                    />
                 </Col>
             </Row>
             <br />
@@ -118,9 +176,9 @@ const Main: React.FC<Main> = ({ price, timestamp, currency }) => {
             </Row>
             <hr />
             <br />
-            <NavLink to="/currencys" exact>
-                Currencys Page
-            </NavLink>
+            <Link to="/currencys" exact>
+                {t('currencysPage')}
+            </Link>
             <br />
             <br />
         </StyledContainer>

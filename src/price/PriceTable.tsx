@@ -47,7 +47,7 @@ const PriceTable: React.FC<PriceTable> = ({price, countryCurrency}) => {
            </tr>
          </tbody>
          <caption>
-           <Badge variant="info">
+           <Badge variant="dark">
            {t('badgePriceTable')}
            </Badge>
          </caption>

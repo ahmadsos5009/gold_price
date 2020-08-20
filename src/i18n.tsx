@@ -27,8 +27,10 @@ i18n
             Welcome4: "As a global store of value, gold can also provide financial cover during geopolitical and macroeconomic uncertainty.",
             Welcome5: "We should know that gold price is linked to oil and dollar as following:",
             Welcome6: "The higher the price of oil, so that the price of gold; The relationship between them is a direct correlation.",
-            Welcome7: "The higher the price of the dollar, the lower the price of gold. The relationship between them is inverse."
-        }
+            Welcome7: "The higher the price of the dollar, the lower the price of gold. The relationship between them is inverse.",
+            currencysPage: "Currencies Page",
+            language: "Language"
+          }
       },
       ara: {
         translations: {
@@ -50,7 +52,9 @@ i18n
             Welcome4: "كمخزن عالمي للقيمة ، يمكن للذهب أيضًا توفير غطاء مالي خلال حالة عدم اليقين الجيوسياسي والاقتصاد الكلي",
             Welcome5: ":يجب أن نعلم أن سعر الذهب مرتبط بالنفط والدولار على النحو التالي",
             Welcome6: "كلما ارتفع سعر النفط ، ارتفع سعر الذهب ؛ العلاقة بينهما علاقة مباشرة",
-            Welcome7: "كلما ارتفع سعر الدولار ، انخفض سعر الذهب. العلاقة بينهما معكوسة"            
+            Welcome7: "كلما ارتفع سعر الدولار ، انخفض سعر الذهب. العلاقة بينهما معكوسة",
+            currencysPage: "صفحة العملات",
+            language: "لغة"         
         }
       },
       deu: {
@@ -73,7 +77,9 @@ i18n
           Welcome4: "Als globaler Wertspeicher kann Gold auch bei geopolitischen und makroökonomischen Unsicherheiten finanzielle Deckung bieten.",
           Welcome5: "Wir sollten wissen, dass der Goldpreis wie folgt mit Öl und Dollar verbunden ist:",
           Welcome6: "Je höher der Ölpreis, desto höher der Goldpreis; Die Beziehung zwischen ihnen ist eine direkte Korrelation.",
-          Welcome7: "Je höher der Preis des Dollars ist, desto niedriger ist der Goldpreis. Die Beziehung zwischen ihnen ist umgekehrt."
+          Welcome7: "Je höher der Preis des Dollars ist, desto niedriger ist der Goldpreis. Die Beziehung zwischen ihnen ist umgekehrt.",
+          currencysPage: "Währungen Seite",
+          language: "Sprache"
       }
       },
       spa: {
@@ -96,7 +102,9 @@ i18n
           Welcome4: "As a global store of value, gold can also provide financial cover during geopolitical and macroeconomic uncertainty.",
           Welcome5: "We should know that gold price is linked to oil and dollar as following:",
           Welcome6: "The higher the price of oil, so that the price of gold; The relationship between them is a direct correlation.",
-          Welcome7: "The higher the price of the dollar, the lower the price of gold. The relationship between them is inverse."
+          Welcome7: "The higher the price of the dollar, the lower the price of gold. The relationship between them is inverse.",
+          currencysPage: "Currencys Page",
+          language: "Language",
       }
       },
       fra: {
@@ -119,7 +127,9 @@ i18n
           Welcome4: "En tant que réserve de valeur mondiale, l'or peut également fournir une couverture financière en période d'incertitude géopolitique et macroéconomique.",
           Welcome5: "Il faut savoir que le prix de l'or est lié au pétrole et au dollar comme suit:",
           Welcome6: "Plus le prix du pétrole est élevé, de sorte que le prix de l'or; La relation entre eux est une corrélation directe.",
-          Welcome7: "Plus le prix du dollar est élevé, plus le prix de l'or est bas. La relation entre eux est inverse."
+          Welcome7: "Plus le prix du dollar est élevé, plus le prix de l'or est bas. La relation entre eux est inverse.",
+          currencysPage: "Page des devises",
+          language: "Langue"
       }
       },
       zho: {
@@ -142,7 +152,9 @@ i18n
           Welcome4: "作为全球价值存储，黄金还可以在地缘政治和宏观经济不确定性期间提供财务保障。",
           Welcome5: "我们应该知道，黄金价格与石油和美元联系如下：",
           Welcome6: "石油的价格越高，黄金的价格就越高； 它们之间的关系是直接相关的。",
-          Welcome7: "美元价格越高，黄金价格越低。 它们之间的关系是相反的。"
+          Welcome7: "美元价格越高，黄金价格越低。 它们之间的关系是相反的。",
+          currencysPage: "货币页面",
+          language: "语言"
       }
       },
     },
