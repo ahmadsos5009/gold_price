@@ -106,7 +106,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
     
     return (
       <StyledContainer fluid>
-        <MetaTags>
+        {/* <MetaTags>
           <meta charSet="utf-8" />
           <title>{t("metaTitle", { countryName })}</title>
           <meta
@@ -133,7 +133,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
           <meta property="og:title" content={t("metaTitle", { countryName })} />
           <meta property="og:type" content="product" />
           <meta property="og:image" content="https://gold-price.ga/log.svg"></meta>
-        </MetaTags>
+        </MetaTags> */}
         <br />
         <br />
         <Header>
