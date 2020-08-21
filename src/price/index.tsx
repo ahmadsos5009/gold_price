@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Helmet } from "react-helmet";
+//@ts-ignore
+import MetaTags from 'react-meta-tags';
 import styled from 'styled-components';
 import { Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 import { CountryCode, History } from '../constants';
@@ -105,7 +106,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
     
     return (
       <StyledContainer fluid>
-        <Helmet>
+        <MetaTags>
           <meta charSet="utf-8" />
           <title>{t("metaTitle", { countryName })}</title>
           <meta
@@ -131,7 +132,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
           />
           <meta property="og:title" content={t("metaTitle", { countryName })} />
           <meta property="og:type" content="product" />
-        </Helmet>
+        </MetaTags>
         <br />
         <br />
         <Header>
