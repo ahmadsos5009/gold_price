@@ -4,11 +4,12 @@ import Header from "./Header";
 import Main from "../price";
 import { Store } from "../constants";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { Helmet } from "react-helmet";
+//@ts-ignore
+import Helmet from "react-meta-tags";
 
 const Page: React.FC<RouteComponentProps> = ({ location }) => {
     const currency = location.pathname === "/" ? "USD" : location.pathname.replace("/", "");
-    console.log(location.pathname);
+
     return (
       <Container fluid={"md"}>
         <Helmet>
