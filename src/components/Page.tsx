@@ -6,12 +6,14 @@ import { Store } from "../constants";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 //@ts-ignore
 import Helmet from "react-meta-tags";
+import { ReactSEOMetaTags } from "react-seo-meta-tags";
 
 const Page: React.FC<RouteComponentProps> = ({ location }) => {
     const currency = location.pathname === "/" ? "USD" : location.pathname.replace("/", "");
 
     return (
       <Container fluid={"md"}>
+        <ReactSEOMetaTags website={{ title: "title test",description: "Test hhhhh"}} />
         <Helmet>
           <link
             rel="alternate"

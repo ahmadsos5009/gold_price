@@ -10056,6 +10056,11 @@ react-select@^3.1.0:
     react-input-autosize "^2.2.2"
     react-transition-group "^4.3.0"
 
+react-seo-meta-tags@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-seo-meta-tags/-/react-seo-meta-tags-1.1.0.tgz#00e1a27e2142384f5c0f99d111aff93ca14f17af"
+  integrity sha512-q+k1nlW8OjpTeiV7kQHjRhTVUTbRHjdCjhuK3SAEvuG+zjZejbLem7OE5t1dkULTrxcLllTNGLKY35N3QgX3HQ==
+
 react-text-mask@^5.4.3:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.4.3.tgz#991efb4299e30c2e6c2c46d13f617169463e0d2d"
