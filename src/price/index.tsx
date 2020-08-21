@@ -132,6 +132,7 @@ const Main: React.FC<Main> = ({ price, timestamp, currency, languageParam }) => 
           />
           <meta property="og:title" content={t("metaTitle", { countryName })} />
           <meta property="og:type" content="product" />
+          <meta property="og:image" content="https://gold-price.ga/log.svg"></meta>
         </MetaTags>
         <br />
         <br />
