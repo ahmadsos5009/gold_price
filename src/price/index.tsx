@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-//@ts-ignore
-import Helmet from "react-meta-tags";
+import Helmet from "react-helmet";
 import styled from 'styled-components';
 import { Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 import { CountryCode, History } from '../constants';

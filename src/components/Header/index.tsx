@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     <StyledNavbar bg="light" expand="lg">
       <Navbar.Brand href="/" className="mr-auto">
         <img
-          src="log.svg"
+          src="/log.svg"
           width="50"
           height="50"
           className="d-inline-block align-top"
