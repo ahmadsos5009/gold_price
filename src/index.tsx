@@ -12,7 +12,26 @@ const App = (
     <Switch>
       <Route path="/" exact component={Page} />
       {CurrencyCode.map((currency: string) => (
-        <Route key={currency} path={`/${currency}`} exact component={Page} />
+        <Route key={currency} path={`/${currency}`}>
+          <Switch>
+            <Route exact path={`/${currency}`}>
+              <Page currency={currency}/>
+            </Route>
+            <Route exact path={`/${currency}/ara`}>
+              <Page language={'ara'} currency={currency}/>
+            </Route>
+            <Route exact path={`/${currency}/zho`}>
+              <Page language={'zho'} currency={currency}/>
+            </Route>
+            <Route exact path={`/${currency}/fra`}>
+              <Page language={'fra'} currency={currency}/>
+            </Route>
+            <Route exact path={`/${currency}/deu`}>
+              <Page language={'deu'} currency={currency}/>
+            </Route>
+            <Route component={() => <h1>Not Fond Page 404</h1>} />
+          </Switch>
+        </Route>
       ))}
       <Route path="/currencys" exact component={Currencys} />
       <Route component={() => <h1>Not Fond Page 404</h1>} />

@@ -22,10 +22,10 @@ const Manu = styled.div`
    padding-right: 10px;
 `
 
-const Header: React.FC = () => {
-  const countries = CurrencyCode.map((currency: string) => ({
-    value: currency,
-    label: CountryData.currencies[currency].name,
+const Header: React.FC<{currency?: string}> = ({currency = "USD"}) => {
+  const countries = CurrencyCode.map((c: string) => ({
+    value: c,
+    label: CountryData.currencies[c].name,
   }));
 
   return (
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           <CountrySelect countries={countries} />
         </Manu>
         <NavDropdown.Divider />
-        <LanguagesSelect />
+        <LanguagesSelect currency={currency}/>
       </Navbar.Collapse>
     </StyledNavbar>
   );

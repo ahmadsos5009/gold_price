@@ -27,7 +27,7 @@ const CountrySelect: React.FC<CountrySelect> = ({ countries }) => {
     const history: any = useHistory();
     return (
         <Select
-            onChange={(e: any) => history.push(e.value)}
+            onChange={(e: any) => history.push(`/${e.value}`)}
             placeholder="Search..."
             styles={selectStyles}
             defaultValue={{ label: 'Currency', options: [] }}
