@@ -61,5 +61,12 @@
     "git-scripts": "^0.4.3",
     "react-snap": "^1.23.0",
     "surge": "^0.21.6"
+  },
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "puppeteerExecutablePath": "/usr/bin/chromium-browser"
   }
 }
