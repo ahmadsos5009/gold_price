@@ -9,6 +9,8 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
+      - name: export puppeteer
+        run: sudo export PUPPETEER_SKIP_DOWNLOAD='true'
       - name: Installing puppeteer
         run: sudo npm install -g puppeteer    
       - uses: borales/actions-yarn@v2.0.0
