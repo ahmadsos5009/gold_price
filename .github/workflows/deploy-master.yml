@@ -6,9 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install puppeteer
+        uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+        with:
+          args: pnpm i
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
+      -     
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build # will run `yarn build` command
