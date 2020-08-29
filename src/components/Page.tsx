@@ -36,12 +36,12 @@ const Page: React.FC<PageProps> = ({ language = "en", currency = "USD" }) => {
           />
         </Helmet>
         <Header currency={currency}/>
-        {/* <Main
+        <Main
           price={Store.prices[currency]}
           timestamp={Store.timestamp}
           currency={currency}
           languageParam={language}
-        /> */}
+        />
       </Container>
     );
 }
