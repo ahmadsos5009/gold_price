@@ -15,7 +15,7 @@ jobs:
           cmd: build # will run `yarn build` command
 
       - name: Config Assets For Surge
-        run: sudo mv ./build/index.html ./build/200.html
+        run: sudo mv ./dist/index.html ./dist/200.html
 
       - name: Installing Surge
         run: sudo npm install -g surge
