@@ -21,6 +21,6 @@ jobs:
         run: sudo npm install -g surge
 
       - name: Deploying website
-        run: surge --project ./build/ --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+        run: surge --project ./dist/ --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
 
       - run: echo "Please visit => ${{ secrets.SURGE_DOMAIN }}"

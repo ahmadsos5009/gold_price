@@ -1,0 +1,65 @@
+{
+  "prefetchRate": 5,
+  "maxThreads": null,
+  "disableRoutePrefixing": false,
+  "outputFileRate": 100,
+  "extensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx"
+  ],
+  "minLoadTime": 200,
+  "disablePreload": false,
+  "disableRuntime": false,
+  "preloadPollInterval": 300,
+  "productionSourceMaps": false,
+  "silent": false,
+  "entry": "/home/asouqi/side/gold_price/src/index.tsx",
+  "plugins": [
+    "react-static-plugin-typescript",
+    [
+      "/home/asouqi/side/gold_price/node_modules/react-static-plugin-source-filesystem/node.api.js",
+      {
+        "location": "/home/asouqi/side/gold_price/src/pages"
+      }
+    ],
+    "/home/asouqi/side/gold_price/node_modules/react-static-plugin-reach-router/browser.api.js",
+    "/home/asouqi/side/gold_price/node_modules/react-static-plugin-sitemap/dist/node.api.js",
+    "/home/asouqi/side/gold_price"
+  ],
+  "paths": {
+    "ROOT": "/home/asouqi/side/gold_price",
+    "SRC": "/home/asouqi/side/gold_price/src",
+    "DIST": "/home/asouqi/side/gold_price/dist",
+    "ASSETS": "/home/asouqi/side/gold_price/dist",
+    "PLUGINS": "/home/asouqi/side/gold_price/plugins",
+    "TEMP": "/home/asouqi/side/gold_price/tmp",
+    "ARTIFACTS": "/home/asouqi/side/gold_price/artifacts",
+    "PUBLIC": "/home/asouqi/side/gold_price/public",
+    "NODE_MODULES": "/home/asouqi/side/gold_price/node_modules",
+    "EXCLUDE_MODULES": "/home/asouqi/side/gold_price/node_modules",
+    "PACKAGE": "/home/asouqi/side/gold_price/package.json",
+    "HTML_TEMPLATE": "/home/asouqi/side/gold_price/dist/index.html",
+    "STATIC_DATA": "/home/asouqi/side/gold_price/dist/staticData"
+  },
+  "siteRoot": "/",
+  "basePath": "",
+  "publicPath": "/",
+  "assetsPath": "",
+  "extractCssChunks": false,
+  "inlineCss": false,
+  "babelExcludes": [],
+  "devServer": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "terser": {
+    "terserOptions": {
+      "mangle": {},
+      "parse": {},
+      "compress": {},
+      "output": {}
+    }
+  }
+}
