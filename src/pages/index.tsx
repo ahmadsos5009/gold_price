@@ -38,7 +38,7 @@ export default ({ currency = "USD" }) => {
         price={Store.prices[currency]}
         timestamp={Store.timestamp}
         currency={currency}
-        languageParam={language}
+        languageParam={language || "en"}
       />
     </Container>
   );
