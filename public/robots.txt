@@ -1,1 +1,3 @@
+Sitemap: https://gold-price.ga/sitemap.xml
 User-agent: *
+Allow: /
