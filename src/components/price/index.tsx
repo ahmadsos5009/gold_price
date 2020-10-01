@@ -109,12 +109,16 @@ const Main: React.FC<Main> = ({
         <title>
           {trans[languageParam].metaTitle(countryName, countryCode)}
         </title>
-        <meta
+        {/* <meta
           name="description"
           content={trans[languageParam].metaDescription(
             countryName,
             countryCurrency
           )}
+        /> */}
+        <meta
+          name="description"
+          content={"test test"}
         />
         <meta
           name="Keywords"
