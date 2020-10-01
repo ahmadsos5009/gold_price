@@ -19,16 +19,16 @@ const Currencies: React.FC = () => {
           </Link>
           <HiddenLink>
             <Link to={`/${currency}/ara`} >
-              {CountryData.currencies[currency].name}
+              {CountryData.currencies[currency].name} {' ara'} 
             </Link>
             <Link to={`/${currency}/zho`} >
-              {CountryData.currencies[currency].name}
+              {CountryData.currencies[currency].name} {' zho'} 
             </Link>
             <Link to={`/${currency}/fra`} >
-              {CountryData.currencies[currency].name}
+              {CountryData.currencies[currency].name} {' fra'} 
             </Link>
             <Link to={`/${currency}/deu`} >
-              {CountryData.currencies[currency].name}
+              {CountryData.currencies[currency].name} {' deu'} 
             </Link>
           </HiddenLink>
         </ListGroup.Item>

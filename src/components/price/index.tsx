@@ -109,17 +109,13 @@ const Main: React.FC<Main> = ({
         <title>
           {trans[languageParam].metaTitle(countryName, countryCode)}
         </title>
-        {/* <meta
+        <meta
           name="description"
           content={trans[languageParam].metaDescription(
             countryName,
             countryCurrency
           )}
-        /> */}
-        <meta
-          name="description"
-          content={"test test"}
-        />
+        /> 
         <meta
           name="Keywords"
           content={trans[languageParam].metaKeywords(countryName, countryCurrency)}
@@ -214,11 +210,11 @@ const Main: React.FC<Main> = ({
       <br />
       <br />
       <br />
-      <Row className={"show-grid"}>
+      {/* <Row className={"show-grid"}>
         <Col>
           <Welcome />
         </Col>
-      </Row>
+      </Row> */}
       <hr />
       <br />
       <StyledLink to="/currencies">{t("currenciesPage")}</StyledLink>
