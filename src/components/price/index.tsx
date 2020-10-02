@@ -116,7 +116,7 @@ const Main: React.FC<Main> = ({
             countryCurrency
           )}
         /> 
-        {/* <meta
+       <meta
           name="Keywords"
           content={trans[languageParam].metaKeywords(countryName, countryCurrency)}
         />
@@ -138,7 +138,7 @@ const Main: React.FC<Main> = ({
           content={trans[languageParam].metaTitle(countryName, countryCode)}
         />
         <meta property="og:type" content="product" />
-        <meta property="og:image" content="https://gold-price.ga/log.svg" /> */}
+        <meta property="og:image" content="https://gold-price.ga/log.svg" /> 
       </Helmet>
       <br />
       <br />
